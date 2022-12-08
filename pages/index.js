@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Feed, Sidebar, Widgets } from '../components';
 
 export default function Home({ newsResults, randomUsersResults }) {
+  console.log('123123', process.env.NEXT_PUBLIC_FIREBASE_API_KEY);
   return (
     <div>
       <Head>
