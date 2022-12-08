@@ -1,8 +1,9 @@
 import Head from 'next/head';
+import axios from 'axios';
 
 import { Feed, Sidebar, Widgets } from '../components';
 
-export default function Home() {
+export default function Home({ newsResults, randomUsersResults }) {
   return (
     <div>
       <Head>
@@ -14,8 +15,38 @@ export default function Home() {
       <main className="flex min-h-screen mx-auto">
         <Sidebar />
         <Feed />
-        <Widgets />
+        <Widgets
+          newsResults={newsResults}
+          randomUsersResults={randomUsersResults}
+        />
       </main>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  const newsResponse = await axios.get(
+    'https://saurav.tech/NewsAPI/top-headlines/category/business/us.json',
+    {
+      headers: {
+        'Accept-Encoding': 'gzip,deflate,compress',
+      },
+    }
+  );
+
+  const randomUsersResponse = await axios.get(
+    'https://randomuser.me/api/?results=30&inc=name,login,picture',
+    {
+      headers: {
+        'Accept-Encoding': 'gzip,deflate,compress',
+      },
+    }
+  );
+
+  return {
+    props: {
+      newsResults: newsResponse?.data?.articles || [],
+      randomUsersResults: randomUsersResponse?.data?.results || [],
+    },
+  };
 }
