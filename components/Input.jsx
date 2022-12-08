@@ -1,15 +1,12 @@
-import Image from 'next/image';
 import { FaceSmileIcon, PhotoIcon } from '@heroicons/react/24/outline';
 
 const Input = () => {
   return (
     <div className="flex  border-b border-gray-200 p-3 space-x-3">
-      <Image
+      <img
         className="h-11 w-11 rounded-full cursor-pointer hover:brightness-95"
         alt="profile"
         src="/logo.png"
-        width={44}
-        height={44}
       />
       <div className="w-full divide-y divide-gray-200">
         <div>

@@ -37,8 +37,8 @@ const Sidebar = () => {
       <div className="hoverEffect text-gray-700 flex items-center justify-center xl:justify-start mt-auto">
         <Image
           alt="profile"
-          src="/logo.png"
-          className="h-10 w-10 rounded-full xl:mr-2"
+          src="/avatar.png"
+          className="rounded-full xl:mr-2"
           width={40}
           height={40}
         />
